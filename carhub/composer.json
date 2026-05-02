@@ -1,0 +1,7 @@
+{
+    "name": "codecrafters/carhub",
+    "description": "CarHub PHP project",
+    "require": {
+        "opis/json-schema": "^2.3"
+    }
+}
