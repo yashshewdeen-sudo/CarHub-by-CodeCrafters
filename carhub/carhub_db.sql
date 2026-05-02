@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 01, 2026 at 10:34 AM
+-- Host: localhost
+-- Generation Time: May 02, 2026 at 04:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,7 +52,9 @@ INSERT INTO `car_images` (`image_id`, `listing_id`, `file_path`, `is_main`) VALU
 (16, 5, 'uploads/cars/ff7c70e9877f2ed001bd3fcd932074b4.jpg', 0),
 (17, 5, 'uploads/cars/a7a167834e5390484bcc5b94e3440012.jpg', 0),
 (18, 5, 'uploads/cars/163c64b1140de4e8fd8ff174d404e7af.jpg', 0),
-(19, 5, 'uploads/cars/28a945126ab14960fbdc107a1d5027e8.jpg', 0);
+(19, 5, 'uploads/cars/28a945126ab14960fbdc107a1d5027e8.jpg', 0),
+(20, 6, 'uploads/cars/2306d1a33e6793f506d365d2a6e6881d.webp', 1),
+(21, 6, 'uploads/cars/a5e17f638a9c2a52c9c9d1935ebd340c.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -84,7 +86,8 @@ INSERT INTO `car_listings` (`listing_id`, `seller_id`, `make`, `model`, `year`, 
 (1, 2, 'BMW', 'M4 CSL', 2023, 5000, 8800000.00, 'Petrol', 'Automatic', 'Used', 'Limited 50 Years of M edition. 543hp twin-turbo straight-six.', 'Active', '2026-05-01 05:58:59'),
 (2, 3, 'Porsche', '911 Turbo S', 2020, 35000, 27850000.00, 'Petrol', 'Automatic', 'Used', '650hp flat-six, AWD, PDK 8-speed.', 'Active', '2026-05-01 05:58:59'),
 (3, 4, 'Toyota', 'GR Yaris GRMN', 2022, 5000, 4650000.00, 'Petrol', 'Manual', 'Used', 'Track-focused homologation special.', 'Active', '2026-05-01 05:58:59'),
-(5, 2, 'BMW', 'M550D', 2019, 1000, 4000000.00, 'Diesel', 'Automatic', 'New', 'Diesel M5', 'Active', '2026-05-01 08:31:22');
+(5, 2, 'BMW', 'M550D', 2019, 1000, 4000000.00, 'Diesel', 'Automatic', 'New', 'Diesel M5', 'Active', '2026-05-01 08:31:22'),
+(6, 7, 'BMW', 'BMW M3 GTR', 2001, 5000, 8500000.00, 'Diesel', 'Manual', 'Used', 'This is a rare and iconic BMW M3 GTR (E46), inspired by the legendary race car. Finished in a striking blue and silver livery, this vehicle features a widebody kit, aerodynamic enhancements, and a race-prepped interior with roll cage.\r\n\r\nPowered by a high-performance V8 engine, the car delivers exceptional speed and handling. Maintained in excellent condition with low mileage, it is ideal for collectors, enthusiasts, or track use.', 'Active', '2026-05-01 11:17:28');
 
 -- --------------------------------------------------------
 
@@ -125,10 +128,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `phone`, `role`, `is_active`, `last_login`, `created_at`) VALUES
-(1, 'Site Admin', 'admin@carhub.local', '$2y$10$RMpUOf/k6dIZGXq1kHdy4u/ExZ6Lbhkej54AhzxZRa9pnIYvjhrf2', '57000000', 'Admin', 1, '2026-05-01 12:31:48', '2026-05-01 05:58:59'),
+(1, 'Site Admin', 'admin@carhub.local', '$2y$10$RMpUOf/k6dIZGXq1kHdy4u/ExZ6Lbhkej54AhzxZRa9pnIYvjhrf2', '57000000', 'Admin', 1, '2026-05-02 16:02:20', '2026-05-01 05:58:59'),
 (2, 'Aditya Ramdeworsing', 'aditya@carhub.local', '$2y$10$j35T3tsCn9HzxYLD38o/runPfF2zcYMG1VwMrMT.qnax8Bst2qwtW', '57111111', 'Seller', 1, '2026-05-01 12:28:45', '2026-05-01 05:58:59'),
 (3, 'Priyanka Teeluckdharee', 'priyanka@carhub.local', '$2y$10$j35T3tsCn9HzxYLD38o/runPfF2zcYMG1VwMrMT.qnax8Bst2qwtW', '57222222', 'Seller', 1, NULL, '2026-05-01 05:58:59'),
-(4, 'Yash Shewdeen', 'yash@carhub.local', '$2y$10$j35T3tsCn9HzxYLD38o/runPfF2zcYMG1VwMrMT.qnax8Bst2qwtW', '57333333', 'Seller', 1, NULL, '2026-05-01 05:58:59');
+(4, 'Yash Shewdeen', 'yash@carhub.local', '$2y$10$j35T3tsCn9HzxYLD38o/runPfF2zcYMG1VwMrMT.qnax8Bst2qwtW', '57333333', 'Seller', 1, NULL, '2026-05-01 05:58:59'),
+(7, 'Yassoy', 'yassoy13@gmail.com', '$2y$10$c6zNHeEeSTt3bceD90BE6uaPxTyoyCNmb52L23u3Z2pRa4PPrtZB.', '54893205', 'Seller', 1, '2026-05-02 18:45:33', '2026-05-01 11:09:10');
 
 --
 -- Indexes for dumped tables
@@ -174,13 +178,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `car_images`
 --
 ALTER TABLE `car_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `car_listings`
 --
 ALTER TABLE `car_listings`
-  MODIFY `listing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `listing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -192,7 +196,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

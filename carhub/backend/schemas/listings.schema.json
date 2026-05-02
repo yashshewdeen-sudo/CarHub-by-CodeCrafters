@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carhub.local/schemas/listings.schema.json",
+  "title": "CarListings",
+  "type": "object",
+  "required": ["generated_at", "count", "listings"],
+  "properties": {
+    "generated_at": { "type": "string", "format": "date-time" },
+    "count":        { "type": "integer", "minimum": 0 },
+    "listings": {
+      "type": "array",
+      "items": { "$ref": "listing.schema.json" }
+    }
+  },
+  "additionalProperties": false
+}
