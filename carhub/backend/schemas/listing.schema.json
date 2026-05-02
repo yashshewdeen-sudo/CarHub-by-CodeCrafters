@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carhub.local/schemas/listing.schema.json",
+  "title": "CarListing",
+  "type": "object",
+  "required": ["listing_id", "make", "model", "year", "price", "mileage", "fuel_type", "transmission", "condition_status"],
+  "properties": {
+    "listing_id":   { "type": "integer", "minimum": 1 },
+    "seller_id":    { "type": "integer", "minimum": 1 },
+    "make":         { "type": "string", "minLength": 1, "maxLength": 50 },
+    "model":        { "type": "string", "minLength": 1, "maxLength": 50 },
+    "year":         { "type": "integer", "minimum": 1900, "maximum": 2100 },
+    "mileage":      { "type": "integer", "minimum": 0 },
+    "price":        { "type": "number",  "exclusiveMinimum": 0, "maximum": 100000000 },
+    "fuel_type":    { "type": "string", "enum": ["Petrol", "Diesel", "Hybrid", "Electric"] },
+    "transmission": { "type": "string", "enum": ["Manual", "Automatic", "CVT"] },
+    "condition_status": { "type": "string", "enum": ["New", "Used"] },
+    "description":  { "type": ["string", "null"], "maxLength": 1000 },
+    "status":       { "type": "string", "enum": ["Active", "Pending", "Sold", "Rejected"] },
+    "main_image":   { "type": ["string", "null"] }
+  },
+  "additionalProperties": true
+}
